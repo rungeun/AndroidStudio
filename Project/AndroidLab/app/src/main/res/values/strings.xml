@@ -1,8 +1,5 @@
 <resources>
-    <string name="app_name">카카오톡 로그인</string>
-    <string name="pw_information">회원님의 소중한 정보 보흐를 위해, 카카오계정의 현재 비밀번호를 확인해 주세요.</string>
-    <string name="pw_lost">비밀번호가 기억나지 않으세요?</string>
-    <string name="pw_id">abc1234@gmail.com</string>
-    <string name="pw_password">비밀번호</string>
-    <string name="pw_check">확인</string>
+    <string name="app_name">Ch12_Material</string>
+    <string name="drawer_opened">Opened Drawer</string>
+    <string name="drawer_closed">Closed Drawer</string>
 </resources>

@@ -265,7 +265,7 @@ buildFeatures {
 </LinearLayout>
 ```
 
-``` kotlin
+```kotlin
 package com.example.androidlab
 
 import android.graphics.Typeface
@@ -305,7 +305,7 @@ class MainActivity : AppCompatActivity() {
 ```
 
 실행결과:
-![뷰바인딩1](img/뷰바인딩1.jpg)
+![뷰바인딩1](img/뷰바인딩1.jpg) 
 visible을 누를 경우 "hello world" TEXT박스가 나옵니다.
 ![뷰바인딩2](img/뷰바인딩2.jpg)
 invisible을 누를 경우 "hello world" TEXT박스가 사라집니다.
@@ -314,35 +314,443 @@ invisible을 누를 경우 "hello world" TEXT박스가 사라집니다.
   
 [뷰 바인딩 공식문서](https://developer.android.com/topic/libraries/view-binding?hl=ko#kotlin)
 
+# 07-1 선형으로 배치 - LinearLayout
+뷰를 가로나 세로 방향으로 나열하는 레이아웃 클래스
+- `orientation` 나열 방향 설정
+    - `horizontal` 가로 나열
+    - `vertical` 새로 나열
 
+- `layout_weight` 여백의 비율 (가중치)
+    - `1` 여백을 뷰로 채움
 
+- `gravity` 콘텐츠 정렬
+- `layout_gravity` 뷰 정렬
 
+# 07-2 상대 위치로 배치 - RelativeLayout
+상대 뷰의 위치를 기준으로 정렬하는 레이아웃 클래스
 
+- `layout_above` : 기준 뷰의 위쪽에 배치
+- 
+- `layout_below` : 기준 뷰의 아래쪽에 배치
+- 
+- `layout_toLeftOf` : 기준 뷰의 왼쪽에 배치
+- 
+- `layout_toRightOf` : 기준 뷰의 오른쪽에 배치
 
+- `layout_alignTop` : 기준 뷰와 위쪽을 맞춤
 
+- `layout_alignBottom` : 기준 뷰와 아래쪽을 맞춤
 
+- `layout_alignLeft` : 기준 뷰와 왼쪽을 맞춤
 
+- `layout_alignRight` : 기준 뷰와 오른쪽을 맞춤
 
+- `layout_alignBaseline` : 기준 뷰와 텍스트 기준선을 맞춤'
 
+- `layout_alignParentTop` : 부모의 위쪽에 맞춤
+  
+- `layout_alignParentBottom` : 부모의 아래쪽에 맞춤
+  
+- `layout_alignParentLeft` : 부모의 왼쪽에 맞춤
+  
+- `layout_alignParentRight` : 부모의 오른쪽에 맞춤
+  
+- `layout_alignParentHorizontal` : 부모의 가로 방향 중앙에 맞춤
+  
+- `layout_alignParentVertical` : 부모의 세로 방향 중앙에 맞춤
+  
+- `layout_alignParentInParent` : 부모의 가로,세로 중앙에 맞춤
 
+# 07-3 겹쳐서 배치 - FrameLayout
+뷰를 겹쳐서 출력하는 레이아웃
 
+- 방향이나 상대위치를 조절하는 속성이 없다.
 
+`invisible`
 
+# 07-4 표 형태로 배치 - GridLayout
+행과 열로 구성된 테이블 화면을 만드는 레이아웃 클래스
 
+- `orientation` : 방향 설정
+    - `horizontal`
+    - `vertical`
+  
+- `rowCount` : 세로로 나열할 뷰 개수
+
+- `columnCount` : 가로로 나열할 뷰 개수
+  
+- `layout_row` : 뷰가 위치하는 세로 방향 인덱스
+  
+- `layout_column` : 뷰가 위치하는 가로 방향 인덱스
+  
+- `layout_gravity` : 뷰의 크기 조정
+  
+- `layout_columnSpan` : 가로로 열 병합
+  
+- `layout_rowSpan` : 세로로 행 병합
+
+# 07-5 계층 구조로 배치 - ConstraintLayout
+코드가 아닌 마우스로 레이아웃을 구성하는 레이아웃 편집기
+
+상대 뷰의 위치를 기준으로 정렬하는 RelativeLayout 레이아웃 클래스와 유사
+
+# 08-1 터치와 키 이벤트
+### 터치 이벤트
+터치: 앱의 화면에서 발생하는 사용자 이벤트
+
+이벤트 콜백 함수 `onTouchEvent()` 사용
+
+`콜백함수` : 어떤 이벤트가 발생하거나 시점에 도달 했을 때 시스템에서 자동으로 호출되는 함수
+
+`ACTION_DOWN` : 화면에서 손가락으로 누른 순간
+
+`ACTION_UP` : 화면에서 손가락을 떼는 순간
+
+`ACTION_MOVE` : 화면에서 손가락으로 누른 채로 이동하는 순간
+
+`x` : 이벤트가 발생한 뷰의 x 좌표
+
+`y` : 이벤트가 발생한 뷰의 y 좌표
+
+`rawX` : 화면의 x 좌표
+
+`rawY` : 화면의 Y 좌표
+
+### 키 이벤트
+사용자가 폰의 키를 누르는 순간에 발생
+
+`onKeyDown` : 키를 누른 순간의 이벤트
+
+`onKeyUp` : 키를 떼는 순간의 이벤트
+
+`onKeyLongPress` : 키를 오래 누르는 순간의 이벤트
+
+### 뷰 이벤트
+- 이벤트 소스: 이벤트가 발생한 객체
+- 이벤트 핸들러: 이벤트 발생 시 실행할 로직이 구현된 객체
+- 리스너: 이벤트 소스와 이벤트 핸들러를 연결해 주는 함수
+
+이벤트 소스 - 리스너 - 이벤트 핸들러
+
+# 머티리얼 라이브러리
+구글의 머티리얼 디자인은 모바일과 데스크톱, 그리고 그 밖에 다양한 장치를 아우르는 일관된 애플리케이션 디자인 지침
+
+### 앱바 레이아웃 - 화면 위쪽 영역 꾸미기
+앱바: 화면 위쪽의 꾸밀 수 있는 영역
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.appbar.AppBarLayout
+    android:id="@+id/appbar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#BBBBBB" /> 
+</com.google.android.material.appbar.AppBarLayout>
+```
+ 
+### 코디네이터 레이아웃 - 뷰끼리 상호 작용하기
+뷰끼리 상호 작용해야 할 때 사용
+
+비헤이비어: 자식 뷰끼리 상호작용 하기 위해 코디네이터 레이아웃에 정보를 전달
+ 
+`androidx.core.widget.NestedScrollView` : 뷰에서 발생한 스크롤 연동하기
+```xml
+<!--activity_main.xml-->
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:id="@+id/appbar"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">   <!--뷰 A-->
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#BBBBBB"
+        app:layout_scrollFlags="scroll|enterAlways" >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AppBar"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"/>
+    </androidx.appcompat.widget.Toolbar>
+    <ImageView
+        android:id="@+id/view_a_img"
+        android:layout_width="wrap_content"
+        android:layout_height="410dp"
+        android:src="@drawable/gg_Profile_picture2"
+        app:layout_scrollFlags="scroll|enterAlways"/>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"> <!--뷰 B-->
+        <ImageView
+            android:id="@+id/view_b_img"
+            android:layout_width="wrap_content"
+            android:layout_height="410dp"
+            android:src="@drawable/gg_Profile_picture2"/>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+```
+![뷰바인딩2](img/n12-1_앱바_스크롤.png)
+
+### 컬랩싱 툴바 레이아웃 - 앱바 접히는 형태 설정하기
+앱바 레이아웃 하위에 선언하여 앱바가 접힐 때 다양한 설정을 할 수 있는 뷰
+
+# 12-2 탭 레이아웃 - 탭 버튼 구성
+탭으로 구분하는 화면에서 탭 버튼을 배치하는 레이아웃
+ 
+`tabGravity` : 탭 버튼 정렬 속성
+- `fill` : 가로로 등분하여 배치(기본값)
+- `center` : 탭 버튼을 가운데 정렬
+
+`tabMode` : 탭 버튼 스크롤 속성
+- `fixed` : 스크롤 지원 x (기본값)
+- `scrollable` : 태 버튼 왼쪽부터 나열, 화면을 넘어가면 자동으로 가로 스크롤 생성
+
+# 12-3 내비게이션 뷰 - 드로어 화면 구성
+화면이 옆에서 끌려 나오면서 출력되는 뷰 (좌/우측 메뉴창)
+```xml
+<androidx.drawerlayout.widget.DrawerLayout
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+    <LinearLayout>
+        <!--생략-->
+    </LinearLayout>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/main_drawer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/menu_navigation"/>
+</androidx.drawerlayout.widget.DrawerLayout>
+```
+# 12-4 확장된 플로팅 액션 버튼
+화면에 떠 있는 듯한 버튼을 제공하는 뷰
+`<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton/>`
+- `icon` : 아이콘 표시
+- `text` : 텍스트 표시
+
+# 액티비티 컨포넌트
+# 13-1 인텐트 이해하기
+인텐트: 컴포넌트를 실행하려고 시스템에 전달하는 메시지
+
+# 17-1 데이터베이스에 보관하기
+SQLite는 테이블의 데이터를 앱의 저장소에 파일로 저장하며 외부 앱에서는 접근할 수 없습니다.
+
+SQLiteDatabase라는 API를 이용해야 합니다.
+
+### 질의문 작성
+
+`openOrCreateDatabase("DB파일명", Context.MODE_PRIVATE, null)` 
+
+`public void execSQL(String sql, Object[] bindArgs)` 
+
+`public Cursor rawQuery(String sql, String[])`
+
+- `execSQL(), rawQuery()` 
+  - 첫 번째 매개변수: 질의문 전달
+  - 두 번째 매개변수: 질의문에서 ?문자에 대응하는 값을 배열로 전달
+
+테이블 생성
+```kotlin
+db.execSQL("create table TB ("+
+           "_id integer primary key autoincrement,"
+           "name not null,"
+           "phone)")
+```
+
+데이터 삽입
+```kotlin
+db.execSQL("insert into TB (name, phone) values (?,?)"
+            arrayOf<String>("kim", "1234"))
+```
+
+데이터 조회
+```kotlin
+val cursor = db.rawQuery("select * from TB", null)
+```
+
+Cursor객체로 행을 선택
+
+선택할 때는 moveTo~함수 사용(선택한 행이 있다면 true반환, 없으면 false 반환)
+
+- `public abstract boolean moveToFirst()` : 첫 번째 행을 선택
+- `public abstract boolean moveToLast()` : 마지막 번째 행을 선택
+- `public abstract boolean moveToNext()` : 다음 행을 선택
+- `public abstract boolean moveToPrevious()` : 이전 행을 선택
+- `public abstract boolean moveToPosition(int position)` : 매개변수로 지전한 위치의 행을 선택
+
+선택한 행의 열 데이터를 가져오려면 타입에 따라 `getString()`, `getInt()` 등의 함수 사용
+- `public abstract String getString(int columnIndex)`
+- `public abstract int getInt(int columnIndex)`
+- `public abstract double getDouble(int columnIndex)`
+
+```kotlin
+while (cursor.moveToNext()){
+    val name = cursor.getString(0)
+    val phone = cursor.getString(1)
+}
+```
+
+insert(), update(), delete(), query() 함수도 사용 가능
+
+`public long insert(String table, String nullColumnHack, ContentValues values)`
+
+`public int update(String table, ContentValues values, String whereClause, String[] whereArgs)`
+
+
+`public int delete(String table, String whereClause, String[] whereArgs)`
+
+`public Cursor query(String table, String[] columns, String selection, String[] selectionArgs, String groupBy, String having, String orderBy)`
+
+- table: 테이블명
+- columns: 가져올 값이 담긴 열 이름을 배열로 저장
+- selection: select문의 where절 뒤에 들어갈 문자열
+- selectionArgs: 질의문에서 ?에 들어갈 데이터 배열
+- groupBy: group by 절 뒤에 들어갈 문자열
+- having: having 조건
+- orderBy: orderby 조건
+
+
+insert()함수
+```kotlin
+val values = ContentValues()
+values.put("name", "kim")
+values.put("phone", "1234")
+db.insert("TB", null, values)
+```
+
+query()함수
+```kotlin
+val cursor = db.query("TB", arrayOf<String>("name", "phone"),
+ "phone=?", arrayOf<String>("1234"), null, null, null)
+```
+
+### 데이터베이스 관리
+SQLiteOpenHelper 클래스로 데이터베이스를 관리하는 코드를 추상화
+
+```kotlin
+class DBHelper(context: Context): SQLiteOpenHelper(context, "testdb", null,1){
+    override fun onCreate(db: SQLiteDatabase?) {
+    }
+    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+    }
+}
+```
+
+데이터베이스 객체 생성
+```kotlin
+val db: SQLiteDatabase = DBHelper(this).writableDatabase
+```
+
+# 17-2 파일에 보관하기
+
+파일을 내장 메모리에 저장하려면 java.io클래스를 이용
+
+- `File()`
+  - 첫 번째 매개변수: Context 객체의 filesDir속성 지정
+  - 두 번째 매개변수: 파일명
+
+파일 객체 생성 후 데이터 쓰기
+```kotlin
+val file = File(filesDir,"test.txt")
+val writeStream: OutputStreamWriter = file.writer()
+writeStream.write("hello world")
+writeStream.flush()
+```
+
+파일의 데이터 읽기
+```kotlin
+val readStream: BufferedReader = file.reader(buffered()
+readStream.forEachLine{
+    Log.d("kim","$it")
+}
+```
 
+`openFileOutput()`함수로 java.io의 File 클래스를 이용하지 않고 Context객체로 파일에 데이터를 쓰기, 읽기 가능
+```kotlin
+fun writeFile(context: Context) {
+    context.openFileOutput("test.txt", ContextMODE_PRIVATE).use {
+        it.write("hello world!!".toByteArray())
+    }
+}
+```
 
+```kotlin
+fun readFile(context: Context) {
+    context.openFileInput("test.txt").bufferedReader()forEachLine {
+        Log.d("kim", "1234")
+    }
+}
+```
 
+### 외장 메모리의 파일 이용하기
+`Environment.getExternalStorageState()`함수로 외장 메모리를 사용할 수 있는지 검사
 
+```kotlin
+    if(Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED){ }
+```
 
+# 17-3 공유된 프리퍼런스에 보관하기
+### 공유된 프리퍼런스 이용하기
+공유된 프리퍼런스는 앱의 간단한 데이터를 저장하는데 유용하며 내부적으로 내장 메모리의 앱 폴더에 XML 파일로 저장됩니다.
 
+`Activity.getPreferences(int mode)`
+- 액티비티 단위로 데이터를 저장
+- 함수를 호출하면 액티비티 클래스명으로 XML 파일 자동으로 생성
 
+`Context.getSharedPreferences(String name, int mode)`
+- 앱 전체의 데이터를 키-값 형태로 저장
+- 첫 번째 매개변수: 지정한 이름의 파일로 데이터를 저장
 
+```kotlin
+sharedPref.edit().run {
+    putString("data1", "hello")
+    PutInt("data2", 10)
+    commit()
+}
+```
 
+### 앱 설정 화면 만들기
+플랫폼 API에서 이처럼 앱의 설정 기능을 자동화해주는 API는 많았지만 안드로이드 10 버전(API 레벨 29)부터 모두deprecated
 
+AndroidX의 Preference를 이용할 것을 권장
 
+```xml
+<!--setting_xml.xml-->
+<PreferenceScreen  xmlns:app="http://schemas.android.com/apk/res-auto">"
+    <SwitchPreference
+        app:key="notifications"
+        app:title="Enable message notifications"/>
+    <Preference
+        app:key="feddback"
+        app:title="Send feedback"
+        app:summary="Report technical issues or suggest new features"/>
+</PreferenceScreen>
+```
 
 
+`<Preference>` 태그를 이용해 설정 화면을 분할했다면 액티비티에서 `PreferenceFragmentCompat.OnPreferenceStartFragmentCallback` 인터페이스를 구현하고 `onPreferenceStart Fragment()` 함수를 재정의해서 작성
 
+`onPreferenceStartFragment()`는 설정 화면이 바뀔 때마다 호출되는 함수
 
 
 
@@ -386,13 +794,77 @@ invisible을 누를 경우 "hello world" TEXT박스가 사라집니다.
 
 
 
-
-
-
-
-# 태그 모음
+# XML 태그 모음
 ### 레이아웃 배치
-`LinearLayout` : 레이아웃 객체
+`LinearLayout` : 상대 뷰의 위치를 기준으로 정렬하는 레이아웃 클래스
+
+`orientation` 나열 방향 설정
+- `horizontal` 가로 나열
+- `vertical` 새로 나열
+
+`layout_weight` 여백의 비율 (가중치)
+- `1` 여백을 뷰로 채움
+
+`gravity` 콘텐츠 정렬
+
+`layout_gravity` 뷰 정렬
+
+### RelativeLayout
+`RelativeLayout` :상대 뷰의 위치를 기준으로 정렬하는 레이아웃 클래스
+
+`layout_above` : 기준 뷰의 위쪽에 배치
+
+`layout_below` : 기준 뷰의 아래쪽에 배치
+
+`layout_toLeftOf` : 기준 뷰의 왼쪽에 배치
+
+`layout_toRightOf` : 기준 뷰의 오른쪽에 배치
+
+`layout_alignTop` : 기준 뷰와 위쪽을 맞춤
+
+`layout_alignBottom` : 기준 뷰와 아래쪽을 맞춤
+
+`layout_alignLeft` : 기준 뷰와 왼쪽을 맞춤
+
+`layout_alignRight` : 기준 뷰와 오른쪽을 맞춤
+
+`layout_alignBaseline` : 기준 뷰와 텍스트 기준선을 맞춤'
+
+`layout_alignParentTop` : 부모의 위쪽에 맞춤
+
+`layout_alignParentBottom` : 부모의 아래쪽에 맞춤
+
+`layout_alignParentLeft` : 부모의 왼쪽에 맞춤
+
+`layout_alignParentRight` : 부모의 오른쪽에 맞춤
+
+`layout_alignParentHorizontal` : 부모의 가로 방향 중앙에 맞춤
+
+`layout_alignParentVertical` : 부모의 세로 방향 중앙에 맞춤
+
+`layout_alignParentInParent` : 부모의 가로,세로 중앙에 맞춤
+
+### GridLayout
+`GridLayout` : 행과 열로 구성된 테이블 화면을 만드는 레이아웃 클래스
+
+
+`orientation` : 방향 설정
+  - `horizontal`
+  - `vertical`
+
+`rowCount` : 세로로 나열할 뷰 개
+
+`columnCount` : 가로로 나열할 뷰 개
+
+`layout_row` : 뷰가 위치하는 세로 방향 인덱스
+
+`layout_column` : 뷰가 위치하는 가로 방향 인덱스
+
+`layout_gravity` : 뷰의 크기 조정
+
+`layout_columnSpan` : 가로로 열 병합
+
+`layout_rowSpan` : 세로로 행 병합
 
 ### 텍스트 뷰
 `TextView` : 문자열을 출력
@@ -486,5 +958,31 @@ invisible을 누를 경우 "hello world" TEXT박스가 사라집니다.
 - `visible` : 출력됨 (기본값)
 - `invisible` : 뷰가 화면에 출력되지 않음, 뷰가 보이지는 않지만 자리는 차지
 - `gone` : 뷰가 화면에 출력되지 않음, 뷰가 자리도 차지하지 않음
+  
 
-### 추가 예정
+# CODE 모음
+### 터치 이벤트
+`콜백함수` : 어떤 이벤트가 발생하거나 시점에 도달 했을 때 시스템에서 자동으로 호출되는 함수
+
+`ACTION_DOWN` : 화면에서 손가락으로 누른 순간
+
+`ACTION_UP` : 화면에서 손가락을 떼는 순간
+
+`ACTION_MOVE` : 화면에서 손가락으로 누른 채로 이동하는 순간
+
+`x` : 이벤트가 발생한 뷰의 x 좌표
+
+`y` : 이벤트가 발생한 뷰의 y 좌표
+
+`rawX` : 화면의 x 좌표
+
+`rawY` : 화면의 Y 좌표
+
+### 키 이벤트
+`onKeyDown` : 키를 누른 순간의 이벤트
+
+`onKeyUp` : 키를 떼는 순간의 이벤트
+
+`onKeyLongPress` : 키를 오래 누르는 순간의 이벤트
+
+

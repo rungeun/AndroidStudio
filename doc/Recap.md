@@ -655,53 +655,363 @@ class MainActivity : AppCompatActivity() {
 }
 ```
 ## 과제6 (2024.05.07)
-> 내용1
+> 머티리얼 라이브러리로 화면 구성 예제 코드 리뷰
 >
 >
-### 1번 해설:
-### 2번 해설:
-### 3번 해설:
 
+### 1번 해설:
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/drawer">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+            android:layout_width="match_parent"
+            android:layout_height="242dp"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="242dp"
+                app:contentScrim="?attr/colorPrimary"
+                app:expandedTitleMarginBottom="50dp"
+                app:expandedTitleMarginStart="48dp"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                app:title="AppBar Title">
+                <ImageView
+                    android:id="@+id/backdrop"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baseball"
+                    app:layout_collapseMode="parallax"/>
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"/>
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="bottom"
+                    android:background="#00000000"
+                    app:layout_collapseMode="parallax"
+                    app:tabMode="scrollable"
+                    app:tabTextColor="#FFFFFF"/>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Extended FAB"
+            app:icon="@android:drawable/ic_input_add"
+            app:layout_anchor="@id/viewpager"
+            app:layout_anchorGravity="bottom|right"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/main_drawer_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/navigation_header"
+        app:menu="@menu/menu_navigation"/>
+</androidx.drawerlayout.widget.DrawerLayout>
+```
+속성 값들이 생략된 코드
+```xml
+<androidx.drawerlayout.widget.DrawerLayout>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout>
+        
+        <com.google.android.material.appbar.AppBarLayout>
+          
+            <com.google.android.material.appbar.CollapsingToolbarLayout>
+                <ImageView/>
+                <androidx.appcompat.widget.Toolbar/>
+                <com.google.android.material.tabs.TabLayout/>
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.viewpager2.widget.ViewPager2/>
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton/>
+    
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
+```
 ## 과제7 (2024.05.14)
-> 내용1
+> 1. 인텐트에 대해 설명하시오.
+> 2. 액티비티 상태 3가지에 대해 설명하시오.
 >
->
-### 1번 해설:
-### 2번 해설:
-### 3번 해설:
 
-## 과제8 (2024.05.21)
-> 내용1
->
->
 ### 1번 해설:
-### 2번 해설:
-### 3번 해설:
+- 인텐트란 컴포넌트를 실행하려고 시스템에 띄우는 메시지입니다.
+- 인텐트는 명시적 인텐트와 암시적 인텐트로 구분됩니다.
+    - 명시적 인텐트: 특정 액티비티나 컴포넌트를 명시적으로 지정하여 실행하는 인텐트입니다.
 
-## 과제9 (2024.05.28)
-> 내용1
->
->
-### 1번 해설:
+    - 암시적 인텐트: 수행할 작업의 유형을 지정하고, 이를 처리할 수 있는 컴포넌트를 시스템이 선택하도록 하는 인텐트입니다.
+   
 ### 2번 해설:
-### 3번 해설:
-
-## 과제10 (2024.06.04)
-> 내용1
->
->
-### 1번 해설:
-### 2번 해설:
-### 3번 해설:
+- 액티비티는 활성, 일시 정지, 비활성 상태가 있습니다.
+    - 활성 상태: 액티비티가 화면에 표시되고, 사용자가 상호작용할 수 있는 상태입니다. 이때 액티비티는 onResume() 메서드를 호출하여 사용자 입력을 받을 준비를 합니다.
+    
+    - 일시 정지 상태: 액티비티가 여전히 화면에 표시되지만, 포커스를 잃어 사용자 입력을 받을 수 없는 상태입니다. 이때 onPause() 메서드가 호출됩니다.
+    
+    - 비활성 상태: 액티비티가 화면에 표시되지 않으며, 사용자 입력도 받을 수 없는 상태입니다. 이 상태에서는 onStop() 메서드가 호출되어 액티비티가 더 이상 화면에 나타나지 않음을 나타냅니다.
 
 ## 과제11 (2024.06.011)
-> 내용1
->
+> 1. 예제를 보고 개선된 할 일 목록 앱 코드를 작성해 오시오.
 >
 ### 1번 해설:
-### 2번 해설:
-### 3번 해설:
+```kotlin
+//com/tutorial/ch17_database/AddActivity.kt
+package com.tutorial.ch17_database
 
+import android.app.Activity
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import com.tutorial.ch17_database.databinding.ActivityAddBinding
+
+class AddActivity : AppCompatActivity() {
+    lateinit var binding: ActivityAddBinding
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityAddBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_add, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean =
+        when (item.itemId) {
+            R.id.menu_add_save -> {
+                // 유저가 입력한 값을 데이터베이스에 저장하기
+                val inputData = binding.addEditView.text.toString()
+                val db = DBHelper(this).writableDatabase
+                db.execSQL(
+                    "insert into TODO_TB (todo) values (?)",
+                    arrayOf(inputData)
+                )
+                db.close()
+
+                // 인텐트의 부가 데이터에 유저의 입력값 저장하기
+                val intent = this.intent
+                intent.putExtra("result", inputData)
+                setResult(Activity.RESULT_OK, intent)
+                finish()
+                true
+            }
+            else -> true
+        }
+}
+```
+```kotlin
+//com/tutorial/ch17_database/DBHelper.kt
+package com.tutorial.ch17_database
+
+import android.content.Context
+import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
+
+class DBHelper(context: Context) : SQLiteOpenHelper(context, "testdb", null, 1) {
+    override fun onCreate(db: SQLiteDatabase?) {
+        db?.execSQL("create table TODO_TB (" +
+                "_id integer primary key autoincrement," +
+                "todo not null)"
+        )
+    }
+
+    override fun onUpgrade(db: SQLiteDatabase?, p1: Int, p2: Int) {
+
+    }
+}
+```
+```kotlin
+//com/tutorial/ch17_database/MainActivity.kt
+package com.tutorial.ch17_database
+
+import android.app.Activity
+import android.content.Intent
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.tutorial.ch17_database.databinding.ActivityMainBinding
+
+class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
+    var datas: MutableList<String>? = null
+    lateinit var adapter: MyAdapter
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // 추가 버튼 누르면 AddActivity로 전환
+        binding.mainFab.setOnClickListener {
+            val intent = Intent(this, AddActivity::class.java)
+            startActivityForResult(intent,10)
+        }
+
+        // 데이터베이스에서 가져온 데이터로 리사이클러뷰 초기화
+        datas = mutableListOf()
+        val db = DBHelper(this).readableDatabase
+        val cursor = db.rawQuery("select * from TODO_TB", null)
+        cursor.run {
+            while(moveToNext()){
+                datas?.add(cursor.getString(1)) // 할일 목록 추가
+            }
+        }
+        db.close()
+
+        val layoutManager = LinearLayoutManager(this)
+        binding.mainRecyclerView.layoutManager = layoutManager
+        adapter = MyAdapter(datas)
+        binding.mainRecyclerView.adapter = adapter
+        binding.mainRecyclerView.addItemDecoration(
+            DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+        )
+    }
+
+    // AddActivity에서 유저가 입력한 값을 리사이클러뷰에 추가하기
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 10 && resultCode == Activity.RESULT_OK) {
+            data!!.getStringExtra("result")?.let {
+                datas?.add(it)
+                adapter.notifyDataSetChanged()
+            }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    // 옵션 메뉴에서 설정 버튼 누르면 화면 전환하기
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.menu_main_setting) {
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
+    }
+}
+```
+
+```kotlin
+//com/tutorial/ch17_database/MyAdapter.kt
+package com.tutorial.ch17_database
+
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
+import com.tutorial.ch17_database.databinding.ItemRecyclerviewBinding
+
+class MyViewHolder(val binding: ItemRecyclerviewBinding) : RecyclerView.ViewHolder(binding.root)
+
+class MyAdapter(val datas: MutableList<String>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+    override fun getItemCount(): Int {
+        return datas?.size ?: 0
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
+        MyViewHolder(
+            ItemRecyclerviewBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val binding = (holder as MyViewHolder).binding
+        binding.itemData.text = datas!![position]
+    }
+}
+```
+```kotlin
+//com/tutorial/ch17_database/MySettingsFragment.kt
+package com.tutorial.ch17_database
+
+import android.os.Bundle
+import android.text.TextUtils
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.preference.EditTextPreference
+import androidx.preference.ListPreference
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
+
+class MySettingsFragment : PreferenceFragmentCompat() {
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.settings, rootKey)
+        val idPref = findPreference<EditTextPreference>("id")
+        val colorPref = findPreference<ListPreference>("color")
+
+        colorPref?.summaryProvider = ListPreference.SimpleSummaryProvider.getInstance()
+        idPref?.summaryProvider = Preference.SummaryProvider<EditTextPreference> { pref ->
+            val text = pref.text
+            if(TextUtils.isEmpty(text)){
+                "설정이 되지 않았습니다."
+            }else{
+                "설정된 id 값은: $text 입니다."
+            }
+        }
+    }
+}
+
+```
+
+```kotlin
+//com/tutorial/ch17_database/SettingsActivity.kt
+package com.tutorial.ch17_database
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+
+class SettingsActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_settings)
+    }
+}
+```
 ## 과제12 (2024.06.018)
 > 내용1
 >

@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Firebase인증 로그인</string>
+    <string name="default_web_client_id">Hello!</string>
+</resources>
